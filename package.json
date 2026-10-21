@@ -1,0 +1,25 @@
+{
+  "name": "quraishi-dates",
+  "version": "1.0.0",
+  "description": "تمور القرشي | Quraishi Dates — موقع عرض أصناف التمور واستقبال طلبات المحلات التجارية",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "node --watch server/server.js",
+    "test": "node tools/test.js",
+    "test:notify": "node tools/test-notify.js",
+    "test:worker": "node worker/test-worker.cjs",
+    "setup:whatsapp": "node tools/setup-whatsapp.js",
+    "setup:email": "node tools/setup-email.js",
+    "test:smtp": "node tools/test-smtp.cjs",
+    "images": "node tools/generate-images.js",
+    "build:worker": "node worker/build.cjs",
+    "preview:worker": "node worker/preview.cjs",
+    "deploy:worker": "node worker/build.cjs && cd worker && npx wrangler deploy"
+  },
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "private": true,
+  "license": "MIT"
+}
