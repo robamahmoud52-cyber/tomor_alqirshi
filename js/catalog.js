@@ -32,7 +32,7 @@
   /* بناء قائمة المنتجات: كل خيار (حجم) منتج مستقل بمعرّف فريد */
   const products = [];
   VARIETIES.forEach((v) => {
-    SIZES.forEach((size) => {
+    (v.sizes || SIZES).forEach((size) => {
       products.push({
         id: `${v.slug}-${size}`,
         slug: v.slug,
