@@ -12,10 +12,10 @@
   const SIZES = [5, 10, 15];
 
   const VARIETIES = [
-    { slug: 'ajwa',     ar: 'تمر عجوة',   en: 'Ajwa Dates',     descAr: 'تمر داكن غني بنكهة حلوة زهرية مميزة، من أشهر تمور المدينة المنورة.', descEn: 'Dark, soft dates with a rich caramel note — a timeless favourite.', origin: 'Madinah' },
-    { slug: 'sukkari',  ar: 'تمر سكري',  en: 'Sukkari Dates',  descAr: 'تمر ذهبي ناعم بقوام كريمي وحلاوة عالية، يُفضّل تقديمه في المجالس.', descEn: 'Soft golden dates with a creamy texture and outstanding sweetness.', origin: 'Al-Qassim' },
-    { slug: 'khalas',   ar: 'تمر خلاص',   en: 'Khalas Dates',   descAr: 'تمر كهرماني متوسط الحلاوة بقوام مرن ومذاق متوازن وممتاز.', descEn: 'Amber dates with balanced sweetness and a beautifully firm bite.', origin: 'Al-Qassim' },
-    { slug: 'sagai',    ar: 'تمر صقعي',   en: 'Sagai Dates',    descAr: 'تمر فاتح اللون عالي الحلاوة خفيف اللب، من أنعم تمور المنطقة الشرقية.', descEn: 'Light-coloured, high-sugar dates with a delicate, melt-in-mouth texture.', origin: 'Eastern Province' },
+    { slug: 'ajwa',     ar: 'تمر عجوة',sizes: [9, 12, 20],   en: 'Ajwa Dates',     descAr: 'تمر داكن غني بنكهة حلوة زهرية مميزة، من أشهر تمور المدينة المنورة.', descEn: 'Dark, soft dates with a rich caramel note — a timeless favourite.', origin: 'Madinah' },
+    { slug: 'sukkari',  ar: 'تمر سكري',sizes: [8, 13, 16],  en: 'Sukkari Dates',  descAr: 'تمر ذهبي ناعم بقوام كريمي وحلاوة عالية، يُفضّل تقديمه في المجالس.', descEn: 'Soft golden dates with a creamy texture and outstanding sweetness.', origin: 'Al-Qassim' },
+    { slug: 'khalas',   ar: 'تمر خلاص',sizes: [7, 12, 15],   en: 'Khalas Dates',   descAr: 'تمر كهرماني متوسط الحلاوة بقوام مرن ومذاق متوازن وممتاز.', descEn: 'Amber dates with balanced sweetness and a beautifully firm bite.', origin: 'Al-Qassim' },
+    { slug: 'sagai',    ar: 'تمر صقعي',sizes: [6, 10, 18],   en: 'Sagai Dates',    descAr: 'تمر فاتح اللون عالي الحلاوة خفيف اللب، من أنعم تمور المنطقة الشرقية.', descEn: 'Light-coloured, high-sugar dates with a delicate, melt-in-mouth texture.', origin: 'Eastern Province' },
     { slug: 'medjool',  ar: 'تمر مجدول',  en: 'Medjool Dates',  descAr: 'أكبر تمور العالم حجمًا، غني بنكهة الكراميل، خيار ممتاز للتجارة الفاخرة.', descEn: 'Large, premium-grade dates with deep caramel notes, a top pick for trade.', origin: 'Premium Import' },
     { slug: 'safawi',   ar: 'تمر صفاوي',  en: 'Safawi Dates',   descAr: 'تمر بني داكن متوسط الحلاوة، مناسب للسوق التجاري والأكل اليومي.', descEn: 'Dark brown dates, moderately sweet — a reliable commercial staple.', origin: 'Madinah' },
     { slug: 'barhi',    ar: 'تمر برحي',   en: 'Barhi Dates',    descAr: 'تمر أصفر ذهبي ناعم بقوام كريمي، من أجمل تمور الخليج.', descEn: 'Golden, tender dates with a buttery melt — a Gulf classic.', origin: 'Eastern Province' },
