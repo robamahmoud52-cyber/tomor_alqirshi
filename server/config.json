@@ -1,0 +1,70 @@
+{
+  "port": 3100,
+  "host": "0.0.0.0",
+  "adminPassword": "quraishi2026",
+
+  "whatsapp": {
+    "enabled": true,
+    "phone": "966565283375",
+    "apiKey": "ضع_مفتاح_CallMeBot_هنا"
+  },
+
+  "sms": {
+    "enabled": false,
+    "accountSid": "",
+    "authToken": "",
+    "from": "",
+    "to": "966500000000"
+  },
+
+  "gateway": {
+    "enabled": false,
+    "url": "https://example-sms-gateway.com/send?phone={{phone}}&message={{message}}",
+    "phone": "966500000000",
+    "apiKey": "",
+    "apiKeyHeader": ""
+  },
+
+  "telegram": {
+    "enabled": false,
+    "botToken": "ضع_توكن_البوت_هنا",
+    "chatId": "ضع_رقم_الشات_هنا"
+  },
+
+  "discord": {
+    "enabled": false,
+    "webhookUrl": ""
+  },
+
+  "webhook": {
+    "enabled": false,
+    "url": ""
+  },
+
+  "email": {
+    "enabled": false,
+    "apiKey": "ضع_مفتاح_Resend_هنا",
+    "from": "orders@quraishidates.com",
+    "to": "robamahmoud52@gmail.com"
+  },
+
+  "smtp": {
+    "enabled": true,
+    "host": "smtp.gmail.com",
+    "port": 465,
+    "secure": true,
+    "user": "robamahmoud52@gmail.com",
+    "pass": "onezevnagidclnag",
+    "from": "robamahmoud52@gmail.com",
+    "fromName": "تمور القرشي | Quraishi Dates",
+    "to": "robamahmoud52@gmail.com"
+  },
+
+  "brevo": {
+    "enabled": false,
+    "apiKey": "",
+    "from": "orders@quraishidates.com",
+    "fromName": "تمور القرشي",
+    "to": "robamahmoud52@gmail.com"
+  }
+}

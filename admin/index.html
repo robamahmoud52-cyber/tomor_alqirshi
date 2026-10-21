@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لوحة التحكم — تمور القرشي | Quraishi Dates</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css?v=1.0.0">
+</head>
+<body>
+
+<!-- ══════════ شاشة الدخول ══════════ -->
+<div class="login-screen" id="loginScreen">
+  <form class="login-box" id="loginForm">
+    <div class="login-logo">🌴</div>
+    <h1>تمور القرشي</h1>
+    <p class="login-sub">Quraishi Dates — لوحة التحكم</p>
+    <label class="field">
+      <span>كلمة المرور</span>
+      <input type="password" id="passInput" autocomplete="current-password" placeholder="أدخل كلمة المرور" required>
+    </label>
+    <button class="btn btn-gold btn-block" type="submit">دخول</button>
+    <p class="login-err" id="loginErr" hidden></p>
+    <a class="back-link" href="../index.html">← العودة إلى الموقع</a>
+  </form>
+</div>
+
+<!-- ══════════ اللوحة ══════════ -->
+<div class="app" id="app" hidden>
+
+  <header class="dash-head">
+    <div class="container dh-inner">
+      <div class="dh-brand">
+        <span class="d-logo">🌴</span>
+        <div>
+          <strong>تمور القرشي | Quraishi Dates</strong>
+          <small>لوحة تحكم الطلبات</small>
+        </div>
+      </div>
+
+      <div class="dh-tools">
+        <div class="search-wrap">
+          <input type="search" id="searchInput" placeholder="ابحث باسم المحل أو رقم الطلب أو اسم الصنف…">
+        </div>
+        <select id="statusFilter" class="filter-select" aria-label="تصفية الحالة">
+          <option value="all">كل الحالات</option>
+          <option value="new">جديد</option>
+          <option value="reviewed">تمت المراجعة</option>
+          <option value="prepared">تم التجهيز</option>
+          <option value="delivered">تم التسليم</option>
+          <option value="cancelled">ملغي</option>
+        </select>
+        <span class="live-dot" id="liveDot" title="اتصال مباشر"><i></i> مباشر</span>
+        <span class="new-badge" id="newBadge" title="طلبات جديدة">0</span>
+        <button class="btn btn-outline btn-sm notif-btn" id="notifBtn" type="button" title="تنبيه على شاشة الكمبيوتر عند وصول طلب جديد">🔔 تفعيل التنبيه</button>
+        <button class="btn btn-outline btn-sm" id="logoutBtn" type="button">خروج</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container dash-main">
+    <section class="stats" id="stats"></section>
+
+    <section class="orders-head">
+      <h2>الطلبات <span class="count-badge" id="ordersCount">0</span></h2>
+      <button class="btn btn-outline btn-sm" id="refreshBtn" type="button">تحديث</button>
+    </section>
+
+    <section class="orders" id="orders"></section>
+
+    <div class="empty-state" id="emptyState" hidden>
+      <span>📭</span>
+      <p>لا توجد طلبات بعد. عند وصول طلب جديد سيظهر هنا فورًا.</p>
+    </div>
+  </main>
+</div>
+
+<div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
+
+<script src="admin.js?v=1.0.0"></script>
+</body>
+</html>
