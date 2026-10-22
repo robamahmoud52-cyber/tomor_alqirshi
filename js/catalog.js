@@ -11,7 +11,7 @@
 
 const SIZES = [6, 8, 10, 12, 14, 15, 16, 18, 20, 22, 25, 30];
 
-const أنواع_ثابت = [
+const VARIETIES = [
   { slug:'ajwa', ar:'تمر عجوة', sizes:[12, 15, 18, 22], img:'assets/ajwa.jpg' },
   { slug:'sukari', ar:'تمر سكري', sizes:[10, 12], img:'assets/sukari.jpg' },
   { slug:'sukari-mufattal', ar:'تمر سكري مفتل', sizes:[25, 30], img:'assets/sukari-mufattal.jpg' },
