@@ -2,79 +2,64 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<title>طلباتي - تمور القرشي</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>طلباتي - تمور القريشي</title>
 <style>
 body{font-family:system-ui;background:#fdfaf6;margin:0;padding:20px}
-.box{max-width:600px;margin:0 auto}
-.order-card{background:#fff;border:1px solid #eee;border-radius:16px;padding:16px;margin-bottom:16px;box-shadow:0 2px 8px rgba(0,0,0,0.05)}
-.status{padding:6px 12px;border-radius:20px;font-size:13px;display:inline-block;margin-top:8px}
-.pending{background:#fff3cd;color:#856404}
-.review{background:#cce5ff;color:#004085}
-.preparing{background:#ffe0b2;color:#7a4100}
+.box{max-width:600px;margin:auto}
+.card{background:#fff;border-radius:18px;padding:16px;margin:14px 0;border:1px solid #eee;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.st{padding:6px 14px;border-radius:20px;font-size:13px;display:inline-block;margin-top:8px}
+.pending{background:#fff3cd}
+.reviewed{background:#cce5ff;color:#004085;font-weight:bold}
+.preparing{background:#ffe0b2}
 .ready{background:#d4edda;color:#155724}
 .delivered{background:#155724;color:#fff}
-.steps{display:flex;justify-content:space-between;margin:12px 0 0 0;font-size:11px}
-.steps div{text-align:center;flex:1;opacity:0.3}
-.steps div.active{opacity:1;font-weight:bold;color:#8B5A2B}
-.top{display:flex;justify-content:space-between;align-items:center}
 </style>
 </head>
 <body>
 <div class="box">
-  <div class="top">
-    <h2>طلباتي 📦</h2>
-    <a href="index.html">← رجوع للمتجر</a>
-  </div>
-  <div id="ordersList"></div>
+<h2>📦 طلباتي</h2>
+<a href="/" style="color:#8B5A2B;text-decoration:none">← الرجوع للمتجر</a>
+<div id="list" style="margin-top:20px">جاري تحميل طلباتك...</div>
 </div>
-
 <script>
-const STATUS_TEXT = {
-  pending: 'تم استلام الطلب',
-  review: 'تمت المراجعة',
-  preparing: 'قيد التجهيز',
-  ready: 'تم التجهيز - جاهز للتسليم',
-  delivered: 'تم التسليم'
+const labels = {
+ pending: 'تم استلام طلبك ✅ بنراجعه قريباً',
+ reviewed: 'تمت المراجعة 🔍 وجاري التجهيز',
+ preparing: 'قيد التجهيز 📦',
+ ready: 'تم التجهيز وجاهز للتوصيل 🚚',
+ delivered: 'تم التسليم ✅ شكراً لك'
 };
-const STATUS_CLASS = {
-  pending: 'pending',
-  review: 'review',
-  preparing: 'preparing',
-  ready: 'ready',
-  delivered: 'delivered'
-};
-
-function loadMyOrders(){
-  const orders = JSON.parse(localStorage.getItem('QC_ORDERS') || '[]');
-  const container = document.getElementById('ordersList');
-  
-  if(orders.length === 0){
-    container.innerHTML = '<p style="text-align:center;margin-top:50px">ما عندك طلبات سابقة حتى الآن.<br>اطلب الحين وبتظهر هنا.</p>';
+async function load(){
+ let ids = JSON.parse(localStorage.getItem('my_orders_ids') || '[]');
+ let el = document.getElementById('list');
+ if(!ids.length){
+   el.innerHTML = '<p style="text-align:center;margin-top:50px">ما عندك طلبات حالياً<br><br><a href="/" style="background:#8B5A2B;color:#fff;padding:12px 22px;border-radius:12px;text-decoration:none">تسوق الآن</a></p>';
+   return;
+ }
+ try{
+  let res = await fetch('/api/my-orders-list?ids=' + encodeURIComponent(ids.join(',')));
+  let data = await res.json();
+  if(!data.orders || !data.orders.length){
+    el.innerHTML = '<p>الطلبات محفوظة في جوالك لكن السيرفر انمسح (Render المجاني يمسح). اطلب مرة ثانية.</p>';
     return;
   }
-
-  // اعرض من الاحدث للاقدم
-  container.innerHTML = orders.reverse().map(order => `
-    <div class="order-card">
-      <div style="display:flex;justify-content:space-between">
-        <strong>${order.id || 'TQ-' + order.date}</strong>
-        <small>${order.date}</small>
-      </div>
-      <div style="margin:8px 0;color:#666;font-size:14px">
-        ${order.items ? order.items.map(i=> i.name + ' - ' + i.qty).join('<br>') : 'تفاصيل الطلب'}
-      </div>
-      <div class="steps">
-        ${['pending','review','preparing','ready','delivered'].map((s, idx) => {
-          const currentIdx = ['pending','review','preparing','ready','delivered'].indexOf(order.status || 'pending');
-          return `<div class="${idx <= currentIdx ? 'active' : ''}">${idx+1}. ${STATUS_TEXT[s].split(' ')[0]}</div>`;
-        }).join('')}
-      </div>
-      <span class="status ${STATUS_CLASS[order.status || 'pending']}">${STATUS_TEXT[order.status || 'pending']}</span>
+  el.innerHTML = data.orders.reverse().map(o => `
+    <div class="card">
+      <b>طلب #${o.order_no || o.id}</b>
+      <div style="color:#888;font-size:12px">${new Date(o.created_at || Date.now()).toLocaleString('ar-SA')}</div>
+      <div><span class="st ${o.status || 'pending'}">${labels[o.status] || o.status}</span></div>
+      <div style="margin-top:8px;font-size:13px;color:#555">${(o.items||[]).map(i=> (i.type_ar||i.type||'تمر') + ' x' + (i.qty||1)).join(' ، ')}</div>
+      <div style="margin-top:6px;color:#8B5A2B;font-weight:bold">الإجمالي: ${o.total||0} ر.س</div>
     </div>
   `).join('');
+ }catch(e){
+  el.innerHTML = 'خطأ: ' + e.message;
+ }
 }
-loadMyOrders();
+load();
+setInterval(load, 10000);
 </script>
 </body>
 </html>
+ 
