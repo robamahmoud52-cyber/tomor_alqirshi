@@ -257,6 +257,19 @@ async function handleApi(req, res, url) {
 
     return sendJSON(res, 201, { ok: true, orderNo: order.order_no, id: order.id });
   }
+  /* — طلباتي بدون رقم — يجيب طلبات الزبون المحفوظة في جواله — */
+  if (p === '/api/my-orders-list' && req.method === 'GET') {
+    try {
+      const idsParam = url.searchParams.get('ids') || '';
+      const ids = idsParam.split(',').map(s => s.trim()).filter(Boolean);
+      if (!ids.length) return sendJSON(res, 200, { orders: [] });
+      const all = db.listOrders ? db.listOrders() : [];
+      const mine = all.filter(o => ids.includes(String(o.order_no || o.id || '')));
+      return sendJSON(res, 200, { orders: mine });
+    } catch (e) {
+      return sendJSON(res, 500, { error: e.message });
+    }
+  }
 
   /* ── تسجيل الدخول ── */
   if (p === '/api/login' && req.method === 'POST') {
