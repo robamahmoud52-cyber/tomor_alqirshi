@@ -31,7 +31,7 @@ const أنواع_ثابت = [
   /* بناء قائمة المنتجات: كل خيار (حجم) منتج مستقل بمعرّف فريد */
   const products = [];
   VARIETIES.forEach((v) => {
-    (v.sizes || SIZES).forEach((size) => {
+  (v.sizes || [6,8,10,12,14]).forEach((size) => {
       products.push({
         id: `${v.slug}-${size}`,
         slug: v.slug,
