@@ -11,21 +11,21 @@
 
 const SIZES = [6, 8, 10, 12, 14, 15, 16, 18, 20, 22, 25, 30];
 
-const VARIETIES = [
-  { slug: 'ajwa', ar: 'تمر عجوة', sizes: [12, 15, 18, 22], en: 'Ajwa Dates', descAr: 'عجوة', descEn: 'Ajwa' },
-  { slug: 'sukkari', ar: 'تمر سكري', sizes: [10, 12], en: 'Sukkari Dates', descAr: 'سكري', descEn: 'Sukkari' },
-  { slug: 'sukkari-mufattal', ar: 'تمر سكري مفتل', sizes: [25, 30], en: 'Sukkari Mufattal Dates', descAr: 'سكري مفتل', descEn: 'Sukkari Mufattal' },
-  { slug: 'medjool', ar: 'تمر مجدول', sizes: [12, 15, 20], en: 'Medjool Dates', descAr: 'مجدول', descEn: 'Medjool' },
-  { slug: 'safawi', ar: 'تمر صفاوي', sizes: [10, 12, 14], en: 'Safawi Dates', descAr: 'صفاوي', descEn: 'Safawi' },
-  { slug: 'anbara', ar: 'تمر عنبرة', sizes: [12, 16, 20], en: 'Anbara Dates', descAr: 'عنبرة', descEn: 'Anbara' },
-  { slug: 'mabroom', ar: 'تمر مبروم', sizes: [14, 18, 22], en: 'Mabroom Dates', descAr: 'مبروم', descEn: 'Mabroom' },
-  { slug: 'sagai', ar: 'تمر صقعي', sizes: [8, 10, 12, 14], en: 'Sagai Dates', descAr: 'صقعي', descEn: 'Sagai' },
-  { slug: 'sufri', ar: 'تمر صفري', sizes: [10], en: 'Sufri Dates', descAr: 'صفري', descEn: 'Sufri' },
-  { slug: 'shalabi', ar: 'تمر شلبي', sizes: [8, 12], en: 'Shalabi Dates', descAr: 'شلبي', descEn: 'Shalabi' },
-  { slug: 'mashrouq', ar: 'تمر مشروق', sizes: [10, 12], en: 'Mashrouq Dates', descAr: 'مشروق', descEn: 'Mashrouq' },
-  { slug: 'rashoudiya', ar: 'تمر رشودية', sizes: [8], en: 'Rashoudiya Dates', descAr: 'رشودية', descEn: 'Rashoudiya' },
-  { slug: 'rabia', ar: 'تمر ربيعة', sizes: [8, 10], en: 'Rabia Dates', descAr: 'ربيعة', descEn: 'Rabia' },
-  { slug: 'beidh', ar: 'تمر بيض', sizes: [6], en: 'Beidh Dates', descAr: 'بيض', descEn: 'Beidh' }
+const أنواع_ثابت = [
+  { slug:'ajwa', ar:'تمر عجوة', sizes:[12, 15, 18, 22], img:'assets/ajwa.jpg' },
+  { slug:'sukari', ar:'تمر سكري', sizes:[10, 12], img:'assets/sukari.jpg' },
+  { slug:'sukari-mufattal', ar:'تمر سكري مفتل', sizes:[25, 30], img:'assets/sukari-mufattal.jpg' },
+  { slug:'majdool', ar:'تمر مجدول', sizes:[12, 15, 20], img:'assets/majdool.jpg' },
+  { slug:'safawi', ar:'تمر صفاوي', sizes:[10, 12, 14], img:'assets/safawi.jpg' },
+  { slug:'anbar', ar:'تمر عنبرا', sizes:[12, 16, 20], img:'assets/anbar.jpg' },
+  { slug:'mabroom', ar:'تمر مبروم', sizes:[14, 18, 22], img:'assets/mabroom.jpg' },
+  { slug:'sagai', ar:'تمر صقعي', sizes:[8, 10, 12, 14], img:'assets/sagai.jpg' },
+  { slug:'sufri', ar:'تمر صفري', sizes:[10], img:'assets/sufri.jpg' },
+  { slug:'shishi', ar:'تمر شيشي', sizes:[8, 12], img:'assets/shishi.jpg' },
+  { slug:'mashrook', ar:'تمر مشروك', sizes:[10, 12], img:'assets/mashrook.jpg' },
+  { slug:'ruthob', ar:'تمر رطيب', sizes:[8], img:'assets/ruthob.jpg' },
+  { slug:'rabia', ar:'تمر ربيعة', sizes:[8, 10], img:'assets/rabia.jpg' },
+  { slug:'beidh', ar:'تمر بيض', sizes:[6], img:'assets/beidh.jpg' },
 ];
 
   /* بناء قائمة المنتجات: كل خيار (حجم) منتج مستقل بمعرّف فريد */
