@@ -42,7 +42,7 @@ const أنواع_ثابت = [
         descAr: v.descAr,
         descEn: v.descEn,
         origin: v.origin,
-        image: `assets/dates/${v.slug}.svg`,
+صورة: v.img || v.صورة || `assets/dates/${v.سيكة}.svg`,
       });
     });
   });
