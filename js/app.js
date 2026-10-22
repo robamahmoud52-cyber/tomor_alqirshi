@@ -373,6 +373,8 @@
         'ok'
       );
       if (data.orderNo) {
+         let _ids = JSON.parse(localStorage.getItem('my_orders_ids')||'[]');
+if(!_ids.includes(data.orderNo)){ _ids.push(data.orderNo); localStorage.setItem('my_orders_ids', JSON.stringify(_ids)); }
         setTimeout(() => toast(lang === 'ar' ? `رقم الطلب: ${data.orderNo}` : `Order reference: ${data.orderNo}`, 'ok'), 600);
       }
     } catch (e) {
